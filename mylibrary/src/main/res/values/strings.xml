@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Library</string>
+    <string name="update_download_failed">下载失败</string>
+    <string name="update_download_start">下载开始</string>
+    <string name="update_download_processing">正在下载</string>
+    <string name="update_download_finish">下载完成</string>
+</resources>
