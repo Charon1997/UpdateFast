@@ -1,15 +1,23 @@
 package nexuslink.charon.mylibrary.update;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+
+import kr.co.namee.permissiongen.PermissionFail;
+import kr.co.namee.permissiongen.PermissionGen;
+import kr.co.namee.permissiongen.PermissionSuccess;
 
 /**
  * 项目名称：UpdateFast
@@ -113,6 +121,18 @@ public class UpdateManager {
         intent.putExtra("apkUrl",apkUrl);
         intent.putExtra("apkFilePath",filePath);
         context.startService(intent);
+    }
+
+    /**
+     * 初始化操作、权限的获取
+     * @param activity
+     */
+    public void init(Activity activity) {
+        PermissionGen.with(activity)
+                .addRequestCode(100)
+                .permissions(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ).request();
     }
 
 }
