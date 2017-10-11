@@ -105,13 +105,18 @@ public class UpdateService extends Service {
                 .setContentIntent(progress>=100 ? getContentIntent() :
                         //空的intent
                         PendingIntent.getActivity(this, 0, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT));
-        if(progress>0 && progress<=100){
+        if(progress>0 && progress<100){
             //false为横条，ture为圈圈
             builder.setProgress(100,progress,false);
             builder.setAutoCancel(false);
             builder.setOngoing(true);
             builder.setContentTitle(result+"..."+progress+"%");
-        }else{
+        }else if (progress == 100){
+            builder.setProgress(100,progress,false);
+            builder.setAutoCancel(true);
+            builder.setOngoing(false);
+            builder.setContentTitle(result);
+        } else {
             builder.setContentTitle(result);
             builder.setProgress(0, 0, false);
             builder.setAutoCancel(true);
