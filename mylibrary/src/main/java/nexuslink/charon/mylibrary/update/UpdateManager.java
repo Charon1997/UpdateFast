@@ -7,7 +7,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -35,6 +34,8 @@ public class UpdateManager {
     //创建线程池
     private ThreadPoolExecutor threadPoolExecutor;
     private UpdateDownloadRequest request;
+
+    private Context context;
 
     private UpdateManager() {
         threadPoolExecutor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
@@ -133,6 +134,15 @@ public class UpdateManager {
                 .permissions(
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ).request();
+        context = activity;
+    }
+    @PermissionSuccess(requestCode = 100)
+    public void permissionSuccess() {
+        Toast.makeText(context, "已经获取权限", Toast.LENGTH_SHORT).show();
+    }
+    @PermissionFail(requestCode = 100)
+    public void doFailSomething(){
+        Toast.makeText(context, "获取权限失败", Toast.LENGTH_SHORT).show();
     }
 
 }

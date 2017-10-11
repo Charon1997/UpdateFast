@@ -89,7 +89,6 @@ public class UpdateDownloadRequest implements Runnable {
     public enum FailureCode {
         UnknownHost, Socket, SocketTimeout, connectionTimeout, IO, HttpResponse,
         Json, Interrupted
-
     }
 
     private class DownloadResponseHandler {

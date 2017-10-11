@@ -138,7 +138,6 @@ public class UpdateService extends Service {
         return pendingIntent;
     }
 
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
