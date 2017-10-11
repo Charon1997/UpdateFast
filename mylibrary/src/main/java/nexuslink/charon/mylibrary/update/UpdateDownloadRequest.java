@@ -187,6 +187,7 @@ public class UpdateDownloadRequest implements Runnable {
 
         /**
          * 下载中
+         *
          * @param is
          */
         void sendResponseMessage(InputStream is) {

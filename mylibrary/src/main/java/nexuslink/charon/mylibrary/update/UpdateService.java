@@ -32,7 +32,7 @@ public class UpdateService extends Service {
     private NotificationManager notificationManager;
     private Notification notification;
 
-    private int icon = 0;
+    private int icon = R.mipmap.ic_launcher;
 
 
     @Override
@@ -50,7 +50,7 @@ public class UpdateService extends Service {
             stopSelf();
         }
         assert intent != null;
-        icon = intent.getIntExtra("icon",0);
+        icon = intent.getIntExtra("icon",R.mipmap.ic_launcher);
         apkUrl = intent.getStringExtra("apkUrl");
         //外部存储的路径
         filePath = intent.getStringExtra("apkFilePath");
